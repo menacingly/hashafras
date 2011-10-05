@@ -2,10 +2,10 @@ require 'zlib'
 
 module Hashafras
   class Ring
+
     DEFAULTS = {:replicas => 20}
-
     attr_accessor :options
-
+  
     def initialize(options = {})
       @options = DEFAULTS.merge(options)
     end
@@ -49,6 +49,8 @@ module Hashafras
       
       return find_nearest_member(hash_value)
     end
+
+    alias :[] :find_host_for_key
 
     def find_nearest_member(key)
       member = nil

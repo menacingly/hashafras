@@ -13,6 +13,10 @@ describe Hashafras::Ring do
       ring.find_host_for_key("bar").should == "s1:80"
       ring.find_host_for_key("baz").should == "s1:80"
     end
+
+    it "should respond to hash-style accessors" do
+      ring["foo"].should == "s1:80"
+    end
   end
 
   context "has many members" do
